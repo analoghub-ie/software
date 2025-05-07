@@ -1,0 +1,42 @@
+// Digital level shifter
+// Takes differential input - connect your signal to inp, reference to inn
+// Output will be level-shifted to the "low" and "high" levels
+// Author: A. Sidun
+// Source: AnalogHub.ie
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module level_shifter (inp, inn, outn, outp, low, high);
+    input inp, inn, low, high;
+    output outp, outn;
+    electrical inp, inn, outp, outn, low, high;
+	integer d_outp, d_outn;             // logic output state
+
+   	parameter real input_swing = 5.0;   // define input singnal swing
+	parameter real t_edge = 1e-9;
+	parameter real t_delay = 1e-9;
+
+analog begin
+@(initial_step) begin
+    d_outp = 0;
+    d_outn = 1;
+    end
+
+@(cross(V(inp)-V(inn) - 0.5*input_swing,0)) begin
+    if (V(inp)-V(inn)>0.5*input_swing) begin
+        d_outp = 1;
+        d_outn = 0;
+    end
+    else begin
+        d_outp = 0;
+        d_outn = 1;
+end // end if
+
+end // end cross
+
+V(outp) <+ V(high)*transition(d_outp,t_delay,t_edge) + V(low)*transition(d_outn,t_delay,t_edge);
+V(outn) <+ V(high)*transition(d_outn,t_delay,t_edge) + V(low)*transition(d_outp,t_delay,t_edge);
+
+end //analog begin
+endmodule

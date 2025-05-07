@@ -1,0 +1,25 @@
+// Low Pass filter model based on -3dB frequency definition
+// Author: A. Sidun
+// Source: AnalogHub.ie
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module LPF(in, out);
+electrical in, out;
+parameter real Cutoff_frequency = 10k;      // -3dB frequency
+parameter real Filter_Order = 1;            // 1 for 20dB/dec, 2 for 40dB/dec
+
+analog begin
+case (Filter_Order)
+1: begin    // First Order LPF (-20dB/dec)
+	V(out) <+ laplace_nd(V(in),{2*`M_PI*Cutoff_frequency},{2*`M_PI*Cutoff_frequency, 1});
+	V(out) <+ laplace_nd(V(in),{2*`M_PI*Cutoff_frequency},{2*`M_PI*Cutoff_frequency, 1});
+    end
+
+2: begin    // Second Order LPF (-40dB/dec)
+	V(out) <+ laplace_nd(V(in),{(2*`M_PI*Cutoff_frequency)**2},{(2*`M_PI*Cutoff_frequency)**2, 4*`M_PI*Cutoff_frequency,1});
+    end
+endcase
+end
+endmodule

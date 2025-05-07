@@ -1,0 +1,32 @@
+// Comparator with hysteresis
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module comp_va (vin, vout, low_to_high, high_to_low);
+input vin, high_to_low, low_to_high;
+output vout; 
+    electrical vin, vout, low_to_high, high_to_low ;
+    
+    parameter real vdd = 3.3; // Output voltage during H state
+    //parameter real v_th_l2h = 2.1; // Rising threshold
+    //parameter real v_th_h2l = 0.9; // Falling threshold
+    parameter real t_delay = 1e-9; // Propagation delay
+    parameter real t_edge = 100e-12; // Rise and fall times
+    
+    integer state_cmp;
+    
+    analog begin
+        // Event for v_cmp_ai rising crossing
+        @ (cross (V(vin) - V(low_to_high), +1)) begin
+            state_cmp = 1;
+        end
+        
+        // Event for v_cmp_ai falling crossing
+        @ (cross (V(vin) - V(high_to_low), -1)) begin
+            state_cmp = 0;
+        end
+        
+        V(vout) <+ vdd * transition(state_cmp, t_delay, t_edge);
+    end
+endmodule

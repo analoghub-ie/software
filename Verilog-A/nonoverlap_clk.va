@@ -1,0 +1,48 @@
+// Non-overlap clock generator (same freq as clk)
+// Author: A. Sidun
+// Source: AnalogHub.ie
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module nonoverlap_clk (clk, ph1, ph2);
+    input clk;
+    output ph1, ph2;
+    electrical clk, ph1, ph2;
+
+    parameter real vdd = 5.0;		// define clock high
+    parameter real vss = 0.0;		// define clock low
+    parameter real t_edge = 1e-9;	// rising/falling edge of ph1/ph2
+    parameter real t_delay = 1e-9;	// delay from the input clock edge for ph1/ph2
+    parameter real t_dead = 20e-9; 	// dead-time between ph1/ph2
+
+    real delay_ph1;
+    real delay_ph2;
+    real d_ph1;
+    real d_ph2;
+
+analog begin
+@(initial_step) begin
+    d_ph1 = 1;
+    d_ph2 = 0;
+    end
+
+@(cross(V(clk)-vdd/2, +1)) begin	//rising edge of clk
+        d_ph1 = 1;
+        d_ph2 = 0;
+		delay_ph1 = t_delay + t_dead;
+		delay_ph2 = t_delay;
+end
+
+@(cross(V(clk)-vdd/2, -1)) begin	//falling edge of clk
+        d_ph1 = 0;
+        d_ph2 = 1;
+		delay_ph1 = t_delay;
+		delay_ph2 = t_delay + t_dead;
+end
+
+V(ph1) <+ vdd*transition(d_ph1,delay_ph1,t_edge) + vss*transition(d_ph2,delay_ph1,t_edge);
+V(ph2) <+ vdd*transition(d_ph2,delay_ph2,t_edge) + vss*transition(d_ph1,delay_ph2,t_edge);
+
+end //analog begin
+endmodule

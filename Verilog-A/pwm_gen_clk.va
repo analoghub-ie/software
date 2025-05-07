@@ -1,0 +1,42 @@
+// PWM generator (fixed duty cycle)
+`include "constants.vams"
+`include "disciplines.vams"
+
+module pwm_gen_clk(vout,clk);
+output vout;
+input clk;
+electrical vout, clk;
+
+//parameter real t_delay = 1e-9; //Output Waveform delay Time.
+parameter real vss = 0.0; //Zero Value used in Output Pulse Waveform.
+parameter real vdd = 1.0; //One Value used in Output Pulse Waveform.
+parameter real period = 1e-6; //Period of Input Waveform.
+parameter real t_edge = 1e-9;
+parameter real duty = 0.5 from (0.0:1.0); //Duty Factor for Output Pulse Waveform.
+
+
+integer trigger;
+real width; //Output Pulse Width (Duration of 'vdd').
+real period_1, duty_1, max_step;
+
+analog begin
+   @(initial_step) begin
+      max_step = min(t_edge, t_edge);
+      width = duty * (period - (t_edge + t_edge));
+   end //initial_step
+
+  $bound_step(max_step);
+
+
+@(cross( V(clk) - vdd/2, +1)) trigger = 1; //Generation of rising Edge    
+@(cross( absdelay(V(clk) - vdd/2, width), +1)) trigger = 0;
+
+
+// $display("Falling trigger, %d", trigger);
+   //@( timer(t_delay, period) ) trigger = 1; //Generation of rising Edge
+  //@( timer(t_delay+t_edge+width, period) ) trigger = 0; //Generation of falling Edge
+
+   V(vout) <+ vss + (vdd-vss) * transition(trigger, 0.0, t_edge, t_edge);
+end //analog
+
+endmodule

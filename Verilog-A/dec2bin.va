@@ -1,0 +1,38 @@
+// Decimal number to binary code converter
+// LSB is [0]
+// Change binary_bits variable for your needs!
+// Source: AnalogHub.ie
+
+`include "constants.vams"
+`include "disciplines.vams"
+`define binary_bits 8				// define number of binary bits here
+
+module dec2bin(out);
+output [`binary_bits-1:0] out;
+voltage [`binary_bits-1:0] out;
+
+parameter real decimal_number = 5;
+parameter real vdd = 1.0;			// voltage level of logic 1 (V)
+parameter real vss = 0;				// voltage level of logic 0 (V)
+real dout[`binary_bits-1:0];		// internal result variable
+genvar i;
+real x;
+real z;
+
+analog begin
+// Converting decimal to binary using modulus of 2
+	x = decimal_number;
+while (x!=0) begin
+	for (i = 0; i <`binary_bits; i = i + 1) begin
+		z = x/2.0;
+		x = floor(z);	
+		dout[i] = ceil(z - x);
+	end
+end
+
+// Plotting outputs
+for (i=0; i<`binary_bits; i=i+1)
+	    V(out[i]) <+ transition(dout[i]*vdd,0,0);
+end
+
+endmodule

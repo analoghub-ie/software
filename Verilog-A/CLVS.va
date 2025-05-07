@@ -1,0 +1,28 @@
+// Current Limited Voltage Source (CLVS)
+
+`include "disciplines.vams"
+`include "constants.vams"
+
+module clvs(vp, vn);
+ electrical vp, vn;
+ electrical vint, va;
+  parameter real imax = 0.017; // current limit
+  parameter real vdd  = 3.4;   // V set
+  parameter real Rnil = 1e-9;
+
+  analog begin
+    V(vint,vn) <+ vdd;
+    I(vint,vp) <+ imax;
+    I(vp,va) <+ V(vp,va) / Rnil;
+   
+    @(cross((V(va,vint) + I(va,vint)),0))
+       ;
+   
+    if((V(va,vint) + I(va,vint)) > 0)
+       V(va,vint) <+ 0;
+    else
+       I(va,vint) <+ 0;
+
+  end
+   
+endmodule

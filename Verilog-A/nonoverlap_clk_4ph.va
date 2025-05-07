@@ -1,0 +1,99 @@
+// 4-phases non-overlap clock generator 
+// Author: A. Sidun
+// Source: AnalogHub.ie
+
+//               ____      ____      ____      ____      ____      ____
+// CLK      ____|    |____|    |____|    |____|    |____|    |____|    |____
+//               _________                               _________
+// PH1      ____|         |_____________________________|         |_______________  
+//                         _________                               _________                 
+// PH2      ______________|         |_____________________________|         |_______________ 
+//                                   _________                               _________ 
+// PH3      ________________________|         |_____________________________|         |_______________ 
+//                                             _________                               _________ 
+// PH4      __________________________________|         |_____________________________|         |_______________ 
+
+// Non-overlap clock generator (frequency-divided)
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module nonoverlap_clk_4ph (clk, ph1, ph2, ph3, ph4);
+    input clk;
+    output ph1, ph2, ph3, ph4;
+    electrical clk, ph1, ph2, ph3, ph4;
+
+   	parameter real vdd = 5.0;   // define clock high
+    parameter real vss = 0.0;	// define clock low
+	parameter real t_edge = 1e-9;   // rising/falling edge of ph1/ph2
+	parameter real t_delay = 1e-9;  // delay from the input clock edge for ph1/ph2/ph3/ph4
+    parameter real t_dead = 20e-9;  // dead-time between ph1/ph2/ph3/ph4
+
+    real delay_ph1;
+    real delay_ph2;
+    real delay_ph3;
+    real delay_ph4;
+    real bit_ph1;
+    real bit_ph2;
+    real bit_ph3;
+    real bit_ph4;
+    integer clk_edge_count=0;   // clock rising edge counter
+
+analog begin
+@(initial_step) begin
+    bit_ph1 = 0;
+    bit_ph2 = 0;
+    bit_ph3 = 0;
+    bit_ph4 = 0;
+    end
+
+
+@(cross(V(clk)-vdd/2, +1)) begin	//rising edge of clk
+        clk_edge_count = clk_edge_count + 1; // count rising edges
+		//$display("Rising edge number: %d", clk_edge_count);
+        case(clk_edge_count)
+        1: begin
+            bit_ph1 = 1;
+            bit_ph2 = 0;
+            bit_ph3 = 0;
+            bit_ph4 = 0;
+			delay_ph4 = t_delay;
+            delay_ph1 = t_delay + t_dead;
+        end
+        2: begin 
+            bit_ph1 = 0;
+            bit_ph2 = 1;
+            bit_ph3 = 0;
+            bit_ph4 = 0;
+			delay_ph1 = t_delay;
+		    delay_ph2 = t_delay + t_dead;
+
+        end
+        3: begin 
+            bit_ph1 = 0;
+            bit_ph2 = 0;
+            bit_ph3 = 1;
+            bit_ph4 = 0;
+			delay_ph2 = t_delay;
+			delay_ph3 = t_delay + t_dead;
+
+        end
+        4: begin 
+            bit_ph1 = 0;
+            bit_ph2 = 0;
+            bit_ph3 = 0;
+            bit_ph4 = 1;
+			delay_ph3 = t_delay;
+			delay_ph4 = t_delay + t_dead;
+            clk_edge_count = 0;    // reset counter
+        end
+endcase
+end
+
+V(ph1) <+ vdd*transition(bit_ph1,delay_ph1,t_edge) + vss*transition(bit_ph2,delay_ph1,t_edge);
+V(ph2) <+ vdd*transition(bit_ph2,delay_ph2,t_edge) + vss*transition(bit_ph1,delay_ph2,t_edge);
+V(ph3) <+ vdd*transition(bit_ph3,delay_ph3,t_edge) + vss*transition(bit_ph3,delay_ph3,t_edge);
+V(ph4) <+ vdd*transition(bit_ph4,delay_ph4,t_edge) + vss*transition(bit_ph4,delay_ph4,t_edge);
+
+end //analog begin
+endmodule

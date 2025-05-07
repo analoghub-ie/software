@@ -1,0 +1,224 @@
+(
+cadGrid = 0.001
+
+r = 0.25
+
+EMGRD = 0.95
+
+deltaT = 5
+
+currentDensityMPV=true
+
+routingLayers = ("PO" "M1" "M2" "M3" "M4" "M5" "M6" "M7" "M8" "M9" "M10")
+
+viaLayers = ("CO" "VIA1" "VIA2" "VIA3" "VIA4" "VIA5" "VIA6" "VIA7" "VIA8" "VIA9")
+
+viaWidthList = (
+("CO" 0.09)
+("VIA1" 0.1)
+("VIA2" 0.1)
+("VIA3" 0.1)
+("VIA4" 0.1)
+("VIA5" 0.1)
+("VIA6" 0.1)
+("VIA7" 0.36)
+("VIA8" 0.72)
+("VIA9" 3)
+)
+
+viaLengthList = (
+("CO" 0.09)
+("VIA1" 0.1)
+("VIA2" 0.1)
+("VIA3" 0.1)
+("VIA4" 0.1)
+("VIA5" 0.1)
+("VIA6" 0.1)
+("VIA7" 0.36)
+("VIA8" 0.72)
+("VIA9" 3)
+)
+
+xrefLayers = (
+( "tpdiff" ("diff" "OD"))
+( "tndiff" ("diff" "OD"))
+( "odCont" ("CO_od" "CO"))
+( "polyCont" ("CO_po" "CO"))
+( "poly" ("poly" "PO"))
+( "metal1" ("M1" "M1"))
+( "metal2" ("Mx1" "M2"))
+( "metal3" ("Mx2" "M3"))
+( "metal4" ("Mx3" "M4"))
+( "metal5" ("Mx4" "M5"))
+( "metal6" ("Mx5" "M6"))
+( "metal7" ("Mx6" "M7"))
+( "metal8" ("Mz1" "M8"))
+( "metal9" ("Mu1" "M9"))
+( "metal10" ("AP" "M10"))
+( "VIA1" ("VX" "VIA1"))
+( "VIA2" ("VX" "VIA2"))
+( "VIA3" ("VX" "VIA3"))
+( "VIA4" ("VX" "VIA4"))
+( "VIA5" ("VX" "VIA5"))
+( "VIA6" ("VX" "VIA6"))
+( "VIA7" ("VZ" "VIA7"))
+( "VIA8" ("VU" "VIA8"))
+( "VIA9" ("RV" "VIA9"))
+)
+
+avgCurrentDensSpecList = (
+(nil layer "poly"	minW 0.0 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((0.5 * (w*EMGRD)/w) * 1.03 , 105)((0.5 * (w*EMGRD)/w) * 1.0 , 110)((0.5 * (w*EMGRD)/w) * 0.927 , 125)))
+
+(nil layer "M1"		minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 1.5090*(w-0.016)/w) * 1.434*EMGRD , 105)((4.0000 * 1.5090*(w-0.016)/w) * 1.000*EMGRD , 110)((4.0000 * 1.5090*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx1"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((4.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((4.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx2"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((4.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((4.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx3"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((4.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((4.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx4"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((4.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((4.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx5"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((4.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((4.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx6"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((4.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((4.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mz1"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 8.0960*(w-0.020)/w) * 1.434*EMGRD , 105)((4.0000 * 8.0960*(w-0.020)/w) * 1.000*EMGRD , 110)((4.0000 * 8.0960*(w-0.020)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mu1"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 30.176*(w-0.020)/w) * 1.434*EMGRD , 105)((4.0000 * 30.176*(w-0.020)/w) * 1.000*EMGRD , 110)((4.0000 * 30.176*(w-0.020)/w) * 0.358*EMGRD , 125)))
+
+(nil layer "M1"		minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 1.5090*(w-0.016)/w) * 1.434*EMGRD , 105)(((20/L) * 1.5090*(w-0.016)/w) * 1.000*EMGRD , 110)(((20/L) * 1.5090*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx1"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)(((20/L) * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)(((20/L) * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx2"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)(((20/L) * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)(((20/L) * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx3"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)(((20/L) * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)(((20/L) * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx4"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)(((20/L) * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)(((20/L) * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx5"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)(((20/L) * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)(((20/L) * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx6"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)(((20/L) * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)(((20/L) * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mz1"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 8.0960*(w-0.020)/w) * 1.434*EMGRD , 105)(((20/L) * 8.0960*(w-0.020)/w) * 1.000*EMGRD , 110)(((20/L) * 8.0960*(w-0.020)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mu1"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 30.176*(w-0.020)/w) * 1.434*EMGRD , 105)(((20/L) * 30.176*(w-0.020)/w) * 1.000*EMGRD , 110)(((20/L) * 30.176*(w-0.020)/w) * 0.358*EMGRD , 125)))
+
+(nil layer "M1"		minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 1.5090*(w-0.016)/w) * 1.434*EMGRD , 105)((1.0000 * 1.5090*(w-0.016)/w) * 1.000*EMGRD , 110)((1.0000 * 1.5090*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx1"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((1.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((1.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx2"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((1.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((1.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx3"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((1.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((1.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx4"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((1.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((1.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx5"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((1.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((1.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx6"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((1.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((1.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mz1"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 8.0960*(w-0.020)/w) * 1.434*EMGRD , 105)((1.0000 * 8.0960*(w-0.020)/w) * 1.000*EMGRD , 110)((1.0000 * 8.0960*(w-0.020)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mu1"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 30.176*(w-0.020)/w) * 1.434*EMGRD , 105)((1.0000 * 30.176*(w-0.020)/w) * 1.000*EMGRD , 110)((1.0000 * 30.176*(w-0.020)/w) * 0.358*EMGRD , 125)))
+
+(nil layer "AP"		minW 0.0 maxW -1.0 minL 0.00 maxL -1.0 currentDensity ((2.7 * 0.9 * 1.434*EMGRD , 105)(2.7 * 0.9 * 1.000*EMGRD , 110)(2.7 * 0.9 * 0.358*EMGRD , 125)))
+
+(nil layer "CO_od"	minW 0.0 maxW -1.0 minL 0.00 maxL -1.0 res 29.9954 currentDensity ((0.296 * 0.9 * 1.434 , 105)(0.296 * 0.9 * 1.000*EMGRD , 110)(0.296 * 0.9 * 0.358*EMGRD , 125)))
+(nil layer "CO_po"	minW 0.0 maxW -1.0 minL 0.00 maxL -1.0 res 21.9936 currentDensity ((0.296 * 0.9 * 1.434 , 105)(0.296 * 0.9 * 1.000*EMGRD , 110)(0.296 * 0.9 * 0.358*EMGRD , 125)))
+
+(nil layer "VX"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 0.00 maxLb 5.00 minWu 0.0 maxWu -1.0 minLu 0.00 maxLu 5.00 res 2.5061700 currentDensity ((4.0000*0.158 * 0.9 * 1.434*EMGRD , 105)(4.0000*0.158 * 0.9 * 1.000*EMGRD , 110)(4.0000*0.158 * 0.9 * 0.358*EMGRD , 125)))
+(nil layer "VX"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 5.00 maxLb 20.0 minWu 0.0 maxWu -1.0 minLu 5.00 maxLu 20.0 res 2.5061700 currentDensity (((20/L)*0.158 * 0.9 * 1.434*EMGRD , 105)((20/L)*0.158 * 0.9 * 1.000*EMGRD , 110)((20/L)*0.158 * 0.9 * 0.358*EMGRD , 125)))
+(nil layer "VX"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 20.0 maxLb -1.0 minWu 0.0 maxWu -1.0 minLu 20.0 maxLu -1.0 res 2.5061700 currentDensity ((1.0000*0.158 * 0.9 * 1.434*EMGRD , 105)(1.0000*0.158 * 0.9 * 1.000*EMGRD , 110)(1.0000*0.158 * 0.9 * 0.358*EMGRD , 125)))
+
+(nil layer "VZ"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 0.00 maxLb 5.00 minWu 0.0 maxWu -1.0 minLu 0.00 maxLu 5.00 res 0.2400550 currentDensity ((4.0000*3.077 * 0.9 * 1.434*EMGRD , 105)(4.0000*3.077 * 0.9 * 1.000*EMGRD , 110)(4.0000*3.077 * 0.9 * 0.358*EMGRD , 125)))
+(nil layer "VZ"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 5.00 maxLb 20.0 minWu 0.0 maxWu -1.0 minLu 5.00 maxLu 20.0 res 0.2400550 currentDensity (((20/L)*3.077 * 0.9 * 1.434*EMGRD , 105)((20/L)*3.077 * 0.9 * 1.000*EMGRD , 110)((20/L)*3.077 * 0.9 * 0.358*EMGRD , 125)))
+(nil layer "VZ"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 20.0 maxLb -1.0 minWu 0.0 maxWu -1.0 minLu 20.0 maxLu -1.0 res 0.2400550 currentDensity ((1.0000*3.077 * 0.9 * 1.434*EMGRD , 105)(1.0000*3.077 * 0.9 * 1.000*EMGRD , 110)(1.0000*3.077 * 0.9 * 0.358*EMGRD , 125)))
+
+(nil layer "VZ"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 0.00 maxLb 5.00 minWu 0.0 maxWu -1.0 minLu 0.00 maxLu 5.00 res 0.3905650 currentDensity ((4.0000*3.077 * 0.9 * 1.434*EMGRD , 105)(4.0000*3.077 * 0.9 * 1.000*EMGRD , 110)(4.0000*3.077 * 0.9 * 0.358*EMGRD , 125)))
+(nil layer "VZ"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 5.00 maxLb 20.0 minWu 0.0 maxWu -1.0 minLu 5.00 maxLu 20.0 res 0.3905650 currentDensity (((20/L)*3.077 * 0.9 * 1.434*EMGRD , 105)((20/L)*3.077 * 0.9 * 1.000*EMGRD , 110)((20/L)*3.077 * 0.9 * 0.358*EMGRD , 125)))
+(nil layer "VZ"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 20.0 maxLb -1.0 minWu 0.0 maxWu -1.0 minLu 20.0 maxLu -1.0 res 0.3905650 currentDensity ((1.0000*3.077 * 0.9 * 1.434*EMGRD , 105)(1.0000*3.077 * 0.9 * 1.000*EMGRD , 110)(1.0000*3.077 * 0.9 * 0.358*EMGRD , 125)))
+
+(nil layer "RV"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 0.00 maxLb -1.0 minWu 0.0 maxWu -1.0 minLu 0.00 maxLu -1.0 res 0.0410014 currentDensity ((1.0000*7.000 * 0.9 * 1.434*EMGRD , 105)(1.0000*7.000 * 0.9 * 1.000*EMGRD , 110)(1.0000*7.000 * 0.9 * 0.358*EMGRD , 125)))
+
+)
+
+avgAbsCurrentDensSpecList = (
+(nil layer "poly"	minW 0.0 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((0.5 * (w*EMGRD)/w) * 1.03 , 105)((0.5 * (w*EMGRD)/w) * 1.0 , 110)((0.5 * (w*EMGRD)/w) * 0.927 , 125)))
+
+(nil layer "M1"		minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 1.5090*(w-0.016)/w) * 1.434*EMGRD , 105)((4.0000 * 1.5090*(w-0.016)/w) * 1.000*EMGRD , 110)((4.0000 * 1.5090*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx1"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((4.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((4.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx2"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((4.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((4.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx3"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((4.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((4.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx4"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((4.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((4.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx5"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((4.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((4.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx6"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((4.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((4.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mz1"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 8.0960*(w-0.020)/w) * 1.434*EMGRD , 105)((4.0000 * 8.0960*(w-0.020)/w) * 1.000*EMGRD , 110)((4.0000 * 8.0960*(w-0.020)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mu1"	minW 0.0 maxW -1.0 minL 0.00 maxL 5.00 currentDensity (((4.0000 * 30.176*(w-0.020)/w) * 1.434*EMGRD , 105)((4.0000 * 30.176*(w-0.020)/w) * 1.000*EMGRD , 110)((4.0000 * 30.176*(w-0.020)/w) * 0.358*EMGRD , 125)))
+
+(nil layer "M1"		minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 1.5090*(w-0.016)/w) * 1.434*EMGRD , 105)(((20/L) * 1.5090*(w-0.016)/w) * 1.000*EMGRD , 110)(((20/L) * 1.5090*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx1"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)(((20/L) * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)(((20/L) * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx2"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)(((20/L) * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)(((20/L) * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx3"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)(((20/L) * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)(((20/L) * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx4"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)(((20/L) * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)(((20/L) * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx5"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)(((20/L) * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)(((20/L) * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx6"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)(((20/L) * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)(((20/L) * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mz1"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 8.0960*(w-0.020)/w) * 1.434*EMGRD , 105)(((20/L) * 8.0960*(w-0.020)/w) * 1.000*EMGRD , 110)(((20/L) * 8.0960*(w-0.020)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mu1"	minW 0.0 maxW -1.0 minL 5.00 maxL 20.0 currentDensity ((((20/L) * 30.176*(w-0.020)/w) * 1.434*EMGRD , 105)(((20/L) * 30.176*(w-0.020)/w) * 1.000*EMGRD , 110)(((20/L) * 30.176*(w-0.020)/w) * 0.358*EMGRD , 125)))
+
+(nil layer "M1"		minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 1.5090*(w-0.016)/w) * 1.434*EMGRD , 105)((1.0000 * 1.5090*(w-0.016)/w) * 1.000*EMGRD , 110)((1.0000 * 1.5090*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx1"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((1.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((1.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx2"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((1.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((1.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx3"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((1.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((1.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx4"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((1.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((1.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx5"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((1.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((1.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mx6"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 1.8770*(w-0.016)/w) * 1.434*EMGRD , 105)((1.0000 * 1.8770*(w-0.016)/w) * 1.000*EMGRD , 110)((1.0000 * 1.8770*(w-0.016)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mz1"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 8.0960*(w-0.020)/w) * 1.434*EMGRD , 105)((1.0000 * 8.0960*(w-0.020)/w) * 1.000*EMGRD , 110)((1.0000 * 8.0960*(w-0.020)/w) * 0.358*EMGRD , 125)))
+(nil layer "Mu1"	minW 0.0 maxW -1.0 minL 20.0 maxL -1.0 currentDensity (((1.0000 * 30.176*(w-0.020)/w) * 1.434*EMGRD , 105)((1.0000 * 30.176*(w-0.020)/w) * 1.000*EMGRD , 110)((1.0000 * 30.176*(w-0.020)/w) * 0.358*EMGRD , 125)))
+
+(nil layer "AP"		minW 0.0 maxW -1.0 minL 0.00 maxL -1.0 currentDensity ((2.7 * 0.9 * 1.434*EMGRD , 105)(2.7 * 0.9 * 1.000*EMGRD , 110)(2.7 * 0.9 * 0.358*EMGRD , 125)))
+
+(nil layer "CO_od"	minW 0.0 maxW -1.0 minL 0.00 maxL -1.0 res 29.9954 currentDensity ((0.296 * 0.9 * 1.434 , 105)(0.296 * 0.9 * 1.000*EMGRD , 110)(0.296 * 0.9 * 0.358*EMGRD , 125)))
+(nil layer "CO_po"	minW 0.0 maxW -1.0 minL 0.00 maxL -1.0 res 21.9936 currentDensity ((0.296 * 0.9 * 1.434 , 105)(0.296 * 0.9 * 1.000*EMGRD , 110)(0.296 * 0.9 * 0.358*EMGRD , 125)))
+
+(nil layer "VX"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 0.00 maxLb 5.00 minWu 0.0 maxWu -1.0 minLu 0.00 maxLu 5.00 res 2.5061700 currentDensity ((4.0000*0.158 * 0.9 * 1.434*EMGRD , 105)(4.0000*0.158 * 0.9 * 1.000*EMGRD , 110)(4.0000*0.158 * 0.9 * 0.358*EMGRD , 125)))
+(nil layer "VX"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 5.00 maxLb 20.0 minWu 0.0 maxWu -1.0 minLu 5.00 maxLu 20.0 res 2.5061700 currentDensity (((20/L)*0.158 * 0.9 * 1.434*EMGRD , 105)((20/L)*0.158 * 0.9 * 1.000*EMGRD , 110)((20/L)*0.158 * 0.9 * 0.358*EMGRD , 125)))
+(nil layer "VX"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 20.0 maxLb -1.0 minWu 0.0 maxWu -1.0 minLu 20.0 maxLu -1.0 res 2.5061700 currentDensity ((1.0000*0.158 * 0.9 * 1.434*EMGRD , 105)(1.0000*0.158 * 0.9 * 1.000*EMGRD , 110)(1.0000*0.158 * 0.9 * 0.358*EMGRD , 125)))
+
+(nil layer "VZ"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 0.00 maxLb 5.00 minWu 0.0 maxWu -1.0 minLu 0.00 maxLu 5.00 res 0.2400550 currentDensity ((4.0000*3.077 * 0.9 * 1.434*EMGRD , 105)(4.0000*3.077 * 0.9 * 1.000*EMGRD , 110)(4.0000*3.077 * 0.9 * 0.358*EMGRD , 125)))
+(nil layer "VZ"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 5.00 maxLb 20.0 minWu 0.0 maxWu -1.0 minLu 5.00 maxLu 20.0 res 0.2400550 currentDensity (((20/L)*3.077 * 0.9 * 1.434*EMGRD , 105)((20/L)*3.077 * 0.9 * 1.000*EMGRD , 110)((20/L)*3.077 * 0.9 * 0.358*EMGRD , 125)))
+(nil layer "VZ"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 20.0 maxLb -1.0 minWu 0.0 maxWu -1.0 minLu 20.0 maxLu -1.0 res 0.2400550 currentDensity ((1.0000*3.077 * 0.9 * 1.434*EMGRD , 105)(1.0000*3.077 * 0.9 * 1.000*EMGRD , 110)(1.0000*3.077 * 0.9 * 0.358*EMGRD , 125)))
+
+(nil layer "VZ"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 0.00 maxLb 5.00 minWu 0.0 maxWu -1.0 minLu 0.00 maxLu 5.00 res 0.3905650 currentDensity ((4.0000*3.077 * 0.9 * 1.434*EMGRD , 105)(4.0000*3.077 * 0.9 * 1.000*EMGRD , 110)(4.0000*3.077 * 0.9 * 0.358*EMGRD , 125)))
+(nil layer "VZ"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 5.00 maxLb 20.0 minWu 0.0 maxWu -1.0 minLu 5.00 maxLu 20.0 res 0.3905650 currentDensity (((20/L)*3.077 * 0.9 * 1.434*EMGRD , 105)((20/L)*3.077 * 0.9 * 1.000*EMGRD , 110)((20/L)*3.077 * 0.9 * 0.358*EMGRD , 125)))
+(nil layer "VZ"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 20.0 maxLb -1.0 minWu 0.0 maxWu -1.0 minLu 20.0 maxLu -1.0 res 0.3905650 currentDensity ((1.0000*3.077 * 0.9 * 1.434*EMGRD , 105)(1.0000*3.077 * 0.9 * 1.000*EMGRD , 110)(1.0000*3.077 * 0.9 * 0.358*EMGRD , 125)))
+
+(nil layer "RV"		minW 0.0 maxW -1.0 minL 0.0 maxL -1.0 minWb 0.0 maxWb -1.0 minLb 0.00 maxLb -1.0 minWu 0.0 maxWu -1.0 minLu 0.00 maxLu -1.0 res 0.0410014 currentDensity ((1.0000*7.000 * 0.9 * 1.434*EMGRD , 105)(1.0000*7.000 * 0.9 * 1.000*EMGRD , 110)(1.0000*7.000 * 0.9 * 0.358*EMGRD , 125)))
+
+)
+
+rmsCurrentDensSpecList = (
+(nil layer "poly"	minW 0.00 maxW -1.0 currentDensity ((sqrt(0.003709 * deltaT * w * EMGRD * (w * EMGRD + 1.02))/w, temperature)))
+
+(nil layer "M1"		minW 0.00 maxW -1.0 currentDensity ((sqrt(18.33 * deltaT * (w * EMGRD - 0.016)*(w * EMGRD - 0.016) * (w * EMGRD - 0.016 + 0.352)/(w * EMGRD - 0.016 + 0.0443))/w, temperature)))
+(nil layer "Mx1"	minW 0.00 maxW -1.0 currentDensity ((sqrt(6.310 * deltaT * (w * EMGRD - 0.016)*(w * EMGRD - 0.016) * (w * EMGRD - 0.016 + 0.417)/(w * EMGRD - 0.016 + 0.0443))/w, temperature)))
+(nil layer "Mx2"	minW 0.00 maxW -1.0 currentDensity ((sqrt(3.500 * deltaT * (w * EMGRD - 0.016)*(w * EMGRD - 0.016) * (w * EMGRD - 0.016 + 0.751)/(w * EMGRD - 0.016 + 0.0443))/w, temperature)))
+(nil layer "Mx3"	minW 0.00 maxW -1.0 currentDensity ((sqrt(2.420 * deltaT * (w * EMGRD - 0.016)*(w * EMGRD - 0.016) * (w * EMGRD - 0.016 + 1.085)/(w * EMGRD - 0.016 + 0.0443))/w, temperature)))
+(nil layer "Mx4"	minW 0.00 maxW -1.0 currentDensity ((sqrt(1.850 * deltaT * (w * EMGRD - 0.016)*(w * EMGRD - 0.016) * (w * EMGRD - 0.016 + 1.420)/(w * EMGRD - 0.016 + 0.0443))/w, temperature)))
+(nil layer "Mx5"	minW 0.00 maxW -1.0 currentDensity ((sqrt(1.850 * deltaT * (w * EMGRD - 0.016)*(w * EMGRD - 0.016) * (w * EMGRD - 0.016 + 1.420)/(w * EMGRD - 0.016 + 0.0443))/w, temperature)))
+(nil layer "Mx6"	minW 0.00 maxW -1.0 currentDensity ((sqrt(1.850 * deltaT * (w * EMGRD - 0.016)*(w * EMGRD - 0.016) * (w * EMGRD - 0.016 + 1.420)/(w * EMGRD - 0.016 + 0.0443))/w, temperature)))
+(nil layer "Mz1"	minW 0.00 maxW -1.0 currentDensity ((sqrt(4.370 * deltaT * (w * EMGRD - 0.020)*(w * EMGRD - 0.020) * (w * EMGRD - 0.020 + 2.458)/(w * EMGRD - 0.020 + 0.0443))/w, temperature)))
+(nil layer "Mu1"	minW 0.00 maxW -1.0 currentDensity ((sqrt(13.60 * deltaT * (w * EMGRD - 0.020)*(w * EMGRD - 0.020) * (w * EMGRD - 0.020 + 2.898)/(w * EMGRD - 0.020 + 0.0443))/w, temperature)))
+
+(nil layer "AP"		minW 0.00 maxW -1.0 currentDensity ((sqrt(2.620 * deltaT * (w * EMGRD) * (w * EMGRD + 3.397))/w, temperature)))
+
+)
+
+peakCurrentDensSpecList = (
+(nil layer "poly"	minW 0.0 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((1.875*(w * EMGRD)/w) * 1.03 , 105)((1.875*(w * EMGRD)/w) * 1.0 , 110)((1.875*(w * EMGRD)/w) * 0.927 , 125)))
+
+(nil layer "M1"		minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((36.0 * (w*EMGRD-0.016)/w) * 1.434 , 105)((75.04 * (w*EMGRD-0.016)/w) * 1.000 , 110)((75.04 * (w*EMGRD-0.016)/w) * 0.358 , 125)))
+(nil layer "Mx1"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((22.0 * (w*EMGRD-0.016)/w) * 1.434 , 105)((34.66 * (w*EMGRD-0.016)/w) * 1.000 , 110)((34.66 * (w*EMGRD-0.016)/w) * 0.358 , 125)))
+(nil layer "Mx2"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((22.0 * (w*EMGRD-0.016)/w) * 1.434 , 105)((34.66 * (w*EMGRD-0.016)/w) * 1.000 , 110)((34.66 * (w*EMGRD-0.016)/w) * 0.358 , 125)))
+(nil layer "Mx3"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((22.0 * (w*EMGRD-0.016)/w) * 1.434 , 105)((34.66 * (w*EMGRD-0.016)/w) * 1.000 , 110)((34.66 * (w*EMGRD-0.016)/w) * 0.358 , 125)))
+(nil layer "Mx4"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((22.0 * (w*EMGRD-0.016)/w) * 1.434 , 105)((34.66 * (w*EMGRD-0.016)/w) * 1.000 , 110)((34.66 * (w*EMGRD-0.016)/w) * 0.358 , 125)))
+(nil layer "Mx5"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((22.0 * (w*EMGRD-0.016)/w) * 1.434 , 105)((34.66 * (w*EMGRD-0.016)/w) * 1.000 , 110)((34.66 * (w*EMGRD-0.016)/w) * 0.358 , 125)))
+(nil layer "Mx6"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((22.0 * (w*EMGRD-0.016)/w) * 1.434 , 105)((34.66 * (w*EMGRD-0.016)/w) * 1.000 , 110)((34.66 * (w*EMGRD-0.016)/w) * 0.358 , 125)))
+(nil layer "Mz1"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((63.0 * (w*EMGRD-0.020)/w) * 1.434 , 105)((34.66 * (w*EMGRD-0.020)/w) * 1.000 , 110)((34.66 * (w*EMGRD-0.020)/w) * 0.358 , 125)))
+(nil layer "Mu1"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((99.0 * (w*EMGRD-0.020)/w) * 1.434 , 105)((34.66 * (w*EMGRD-0.020)/w) * 1.000 , 110)((34.66 * (w*EMGRD-0.020)/w) * 0.358 , 125)))
+
+)
+
+ACpeakCurrentDensSpecList = (
+(nil layer "poly"	minW 0.0 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((1.875*(w * EMGRD)/w) * 1.03 , 105)((1.875*(w * EMGRD)/w) * 1.0 , 110)((1.875*(w * EMGRD)/w) * 0.927 , 125)))
+
+(nil layer "M1"		minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((36.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 1.434 , 105)((36.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 1.000 , 110)((36.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 0.358 , 125)))
+(nil layer "Mx1"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 1.434 , 105)((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 1.000 , 110)((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 0.358 , 125)))
+(nil layer "Mx2"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 1.434 , 105)((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 1.000 , 110)((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 0.358 , 125)))
+(nil layer "Mx3"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 1.434 , 105)((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 1.000 , 110)((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 0.358 , 125)))
+(nil layer "Mx4"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 1.434 , 105)((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 1.000 , 110)((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 0.358 , 125)))
+(nil layer "Mx5"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 1.434 , 105)((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 1.000 , 110)((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 0.358 , 125)))
+(nil layer "Mx6"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 1.434 , 105)((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 1.000 , 110)((22.0 * ((w*EMGRD-0.016)/w)/sqrt(r)) * 0.358 , 125)))
+(nil layer "Mz1"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((63.0 * ((w*EMGRD-0.020)/w)/sqrt(r)) * 1.434 , 105)((63.0 * ((w*EMGRD-0.020)/w)/sqrt(r)) * 1.000 , 110)((63.0 * ((w*EMGRD-0.020)/w)/sqrt(r)) * 0.358 , 125)))
+(nil layer "Mu1"	minW 0.00 maxW -1.0 minL 0.00 maxL -1.0 currentDensity (((99.0 * ((w*EMGRD-0.020)/w)/sqrt(r)) * 1.434 , 105)((99.0 * ((w*EMGRD-0.020)/w)/sqrt(r)) * 1.000 , 110)((99.0 * ((w*EMGRD-0.020)/w)/sqrt(r)) * 0.358 , 125)))
+
+)
+
+)
