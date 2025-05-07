@@ -1,0 +1,17 @@
+// High Pass filter model based on -3dB frequency definition
+// Author: A. Sidun
+// Source: AnalogHub.ie
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module HPF(in, out);
+electrical in, out;
+parameter real Cutoff_frequency = 10k;      // -3dB frequency
+
+analog begin
+ V(out) <+ laplace_nd(V(in),{0, 1},{2*`M_PI*Cutoff_frequency, 1});
+    end
+endcase
+end
+endmodule

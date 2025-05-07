@@ -1,4 +1,4 @@
-// Digital level shifter
+// Digital level shifter (without inversion)
 // Takes differential input - connect your signal to inp, reference to inn
 // Output will be level-shifted to the "low" and "high" levels
 // Author: A. Sidun
@@ -13,7 +13,7 @@ module level_shifter (inp, inn, outn, outp, low, high);
     electrical inp, inn, outp, outn, low, high;
 	integer d_outp, d_outn;             // logic output state
 
-   	parameter real input_swing = 5.0;   // define input singnal swing
+   	parameter real input_swing = 5.0;   // define input signal swing
 	parameter real t_edge = 1e-9;
 	parameter real t_delay = 1e-9;
 

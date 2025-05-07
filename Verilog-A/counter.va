@@ -1,0 +1,39 @@
+// Verilog-A model for Binary Counter
+// Source: AnalogHub.ie
+// Author: A. Sidun
+// Reference: A. Beckett
+
+`include "constants.vams"
+`include "disciplines.vams"
+`define bits 4
+
+module counter (clk,en,out);
+input clk, en;
+output [`bits-1 :0] out;
+electrical clk, en;
+electrical  [`bits-1 :0] out;
+
+parameter integer start_code = 0 from [0:(1<<`bits)-1];   // Start code for the counter
+parameter integer count_up = 1 from [0:1];         // Set 1 for increasing or 0 for decreasing
+parameter integer step_size = 1;              // Step size for the counter
+parameter real vth_clk = 0.5;               // Clock threshold
+parameter real vtol = 0;                  // Signal tolerance on the clk
+parameter real ttol = 0;                  // Time tolerance on the clk
+parameter real vdd = 1.0;
+parameter real vth = 1;
+parameter real vss = 0;
+parameter real t_delay = 30p;               // Delay time for the output waveform
+parameter real t_edge = 30p;               // Rising/falling times of the output waveform
+integer outval;                      // Internal counter 
+
+analog begin
+  @(initial_step("static","ac")) outval = start_code;
+  @(cross(V(clk)-vth_clk,1,vtol,ttol)) begin
+    if (V(en)<vth) outval=0.0;
+    else outval = (outval +(+count_up- !count_up)*step_size)%(1<<`bits);
+  end
+  generate j (`bits-1 , 0) begin
+    V(out[j]) <+ transition (!(!(outval &(1<<j)))*vdd+!(outval&(1<<j))*vss,t_delay,t_edge,t_edge);
+  end
+end
+endmodule
