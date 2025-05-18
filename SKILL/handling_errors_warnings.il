@@ -1,3 +1,11 @@
+/*
+Functions that show how to use dialog box for various cases, like error, warning, info and dialog messages.
+
+Author: Eugeny Khanchin
+Source: AnalogHub.ie
+*/
+
+
 procedure( writeData(filePath data)
 	/*
 	An example of using error message box to indicate that the file
