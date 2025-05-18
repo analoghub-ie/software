@@ -10,6 +10,9 @@ Example usage - JSON:
 	hashTableIntoJSON(table "table.json")
 	table2 = jsonIntoHashTable("table.json")
 	print(table2["list"])
+
+Author: Eugeny Khanchin
+Source: AnalogHub.ie
 */
 
 
